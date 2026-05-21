@@ -1,0 +1,27 @@
+{
+	"name": "javascript3",
+	"version": "1.0.0",
+	"private": true,
+	"description": "",
+	"license": "MIT",
+	"author": "Ryan Suhartanto <suhartanto@kekkon.nexus>",
+	"repository": "ryansuhartanto/koda-b8-javascript3",
+	"type": "module",
+	"module": "src/index.js",
+	"scripts": {
+		"prepare": "husky",
+		"lint": "oxlint",
+		"lint:fix": "oxlint --fix",
+		"fmt": "oxfmt",
+		"start": "bun run src/index.js"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^21",
+		"@kekkon-nexus/config": "^2.260520.0",
+		"husky": "^9",
+		"nano-staged": "^1",
+		"oxfmt": "~0.51",
+		"oxlint": "^1.66",
+		"oxlint-tsgolint": "^0.23"
+	}
+}

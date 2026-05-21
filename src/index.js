@@ -4,6 +4,7 @@ import prompts from "prompts";
 import { name } from "./menu";
 import { pesan } from "./pesan";
 import * as pesanan from "./pesanan";
+import { bayar } from "./bayar";
 
 main();
 
@@ -31,6 +32,11 @@ async function main() {
 					value: "pesan",
 				},
 				{
+					title: "bayar",
+					value: "bayar",
+					disabled: !pesanan.adaPesanan(),
+				},
+				{
 					title: "keluar",
 					value: "keluar",
 				},
@@ -42,6 +48,13 @@ async function main() {
 				const tambah = await pesan();
 				pesanan.tambahPesanan(tambah);
 				break;
+			}
+			case "bayar": {
+				const { kembali } = await bayar();
+				console.log("Kembalian anda:");
+				console.log(kembali);
+				console.log("Terimakasih telah berkunjung 🙏");
+				return;
 			}
 			case "keluar": {
 				if (await keluar()) {

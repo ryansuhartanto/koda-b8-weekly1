@@ -2,8 +2,12 @@ import { styleText } from "node:util";
 
 let pesanan = [];
 
+export function adaPesanan() {
+	return pesanan.length > 0;
+}
+
 export function print() {
-	if (pesanan.length === 0) {
+	if (!adaPesanan()) {
 		console.log(styleText(["bold"], "Pesanan anda masih kosong!"));
 		console.log(styleText(["dim"], "Silahkan pesan di menu utama."));
 	} else {
@@ -22,4 +26,8 @@ export function print() {
 
 export function tambahPesanan(pesan) {
 	pesanan.push(pesan);
+}
+
+export function hitungHarga() {
+	return pesanan.reduce((acc, { price }) => acc + price, 0);
 }

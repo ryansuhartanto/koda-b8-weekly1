@@ -1,7 +1,7 @@
 {
 	"name": "Wingstop",
 	"menu": {
-		"combo": [
+		"main": [
 			{
 				"name": "Chicken Combo Rice 1",
 				"details": [

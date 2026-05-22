@@ -1,13 +1,7 @@
-# Koda Academy - JavaScript 3
+# Koda Academy - Weekly 1
 
-## Minitask 4
+Software berbasis JavaScript untuk memesan dan membayar menu restaurant.
 
-Memproses data untuk menghitung luas dan keliling lingkaran menggunakan
-callback function.
+## License
 
-`getPi` digunakan sebagai function yang mengebalikan nilai $\pi$ sesuai input.  
-$\pi$ yang dikembalikan berupa $22 / 7$ jika input bisa dibagi $7$;
-$3.14$ selainnya.
-
-`luas` dan `keliling` menerima 2 input, `r` (radius) dan `piFn` callback yang
-mengembalikan `Math.PI` secara default.
+[MIT](LICENSE)

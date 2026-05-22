@@ -6,6 +6,19 @@ export function adaPesanan() {
 	return pesanan.length > 0;
 }
 
+function formatDetails({ name, qty, option }) {
+	const str = [];
+
+	str.push(name);
+	str.push(qty);
+
+	if (option) {
+		str.push(styleText(["dim"], `(${option.join(", ")})`));
+	}
+
+	return str.join(" ");
+}
+
 export function print() {
 	if (!adaPesanan()) {
 		console.log(styleText(["bold"], "Pesanan anda masih kosong!"));
@@ -15,7 +28,7 @@ export function print() {
 		console.table(
 			pesanan.reduce((acc, { name, details, price }) => {
 				acc[name] = {
-					details: details.map(({ name, qty }) => `${name} ${qty}`).join(" + "),
+					details: details.map(formatDetails).join(" + "),
 					price,
 				};
 				return acc;

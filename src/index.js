@@ -9,7 +9,11 @@ import { bayar } from "./bayar";
 main();
 
 async function main() {
-	while (true) {
+	let unfinished = true;
+
+	while (unfinished) {
+		unfinished = false;
+
 		console.clear();
 		console.log(
 			`Selamat datang di ${styleText(
@@ -47,6 +51,7 @@ async function main() {
 			case "pesan": {
 				const tambah = await pesan();
 				pesanan.tambahPesanan(tambah);
+				unfinished = true;
 				break;
 			}
 			case "bayar": {
@@ -54,13 +59,18 @@ async function main() {
 				console.log("Kembalian anda:");
 				console.log(kembali);
 				console.log("Terimakasih telah berkunjung 🙏");
-				return;
+				break;
 			}
 			case "keluar": {
 				if (await keluar()) {
 					console.log("Terimakasih telah berkunjung 🙏");
-					return;
+				} else {
+					unfinished = true;
 				}
+				break;
+			}
+			default: {
+				unfinished = true;
 				break;
 			}
 		}

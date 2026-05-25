@@ -3,6 +3,10 @@ import { styleText } from "node:util";
 /** @type {Array<{ name: string, details: Array<{ name: string, qty: number, option?: string[] }>, price: number }>} */
 let pesanan = [];
 
+export function _reset() {
+	pesanan = [];
+}
+
 /**
  * Returns whether there is at least one item in the current order.
  *

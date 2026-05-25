@@ -9,6 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
 
     steps:
       - uses: actions/checkout@v6
@@ -23,8 +24,41 @@ jobs:
             --test-reporter spec \
             --test-reporter-destination stdout \
             --test-reporter lcov \
-            --test-reporter-destination lcov.info
+            --test-reporter-destination coverage/lcov.info
 
-      - uses: codecov/codecov-action@v6
+      - uses: actions/upload-artifact@v7
         with:
-          file: ./lcov.info
+          file: coverage/lcov.info
+          name: lcov.info
+
+      - uses: barecheck/code-coverage-action@v1
+        with:
+          lcov-file: coverage/lcov.info
+
+  pr:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v6
+        with:
+          node-version: latest
+
+      - run: bun install
+      - run: |
+          bun run test \
+            --test-reporter spec \
+            --test-reporter-destination stdout \
+            --test-reporter lcov \
+            --test-reporter-destination coverage/lcov.info
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: lcov.info
+
+      - uses: barecheck/code-coverage-action@v1
+        with:
+          lcov-file: coverage/lcov.info
+          base-lcov-file: lcov.info

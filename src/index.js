@@ -8,6 +8,12 @@ import { bayar } from "./bayar";
 
 main();
 
+/**
+ * Application entry point. Runs the main menu loop until the user
+ * completes payment or explicitly chooses to exit.
+ *
+ * @returns {Promise<void>}
+ */
 async function main() {
 	let unfinished = true;
 
@@ -77,6 +83,11 @@ async function main() {
 	}
 }
 
+/**
+ * Prompts the user to confirm order cancellation before exiting.
+ *
+ * @returns {Promise<boolean>} `true` if the user confirmed exit, `false` otherwise.
+ */
 async function keluar() {
 	const { res } = await prompts({
 		type: "confirm",

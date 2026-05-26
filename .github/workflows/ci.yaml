@@ -29,8 +29,8 @@ jobs:
 
       - uses: actions/upload-artifact@v7
         with:
-          file: coverage/lcov.info
           name: lcov.info
+          path: coverage/lcov.info
 
       - uses: barecheck/code-coverage-action@v1
         with:

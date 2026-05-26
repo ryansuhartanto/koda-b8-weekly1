@@ -19,6 +19,7 @@ jobs:
           node-version: latest
 
       - run: bun install
+      - run: mkdir coverage
       - run: |
           bun run test \
             --test-reporter spec \
@@ -47,6 +48,7 @@ jobs:
           node-version: latest
 
       - run: bun install
+      - run: mkdir coverage
       - run: |
           bun run test \
             --test-reporter spec \
